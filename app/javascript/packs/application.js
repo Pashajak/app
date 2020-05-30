@@ -16,19 +16,23 @@ require("jquery")
 // const imagePath = (name) => images(name, true)
 
 $(document).ready(function() {
-    $( "#brand" ).change(function(q) {
-        $.ajax({
-            url: '/models',
-            type: 'GET',
-            data: { brand_id: $( "#brand" ).val() }
-        }).done(data => {
-            $('#model').find('option').remove().end()
+    models()
 
-            $.each(data, (_, {id, name, year}) => {
-                $('#model')
-                    .append($('<option>', { value : id })
+    $( "#brand" ).change(models);
+});
+
+function models() {
+    $.ajax({
+        url: '/models',
+        type: 'GET',
+        data: { brand_id: $( "#brand" ).val() }
+    }).done(data => {
+        $('#model').find('option').remove().end()
+
+        $.each(data, (_, {id, name, year}) => {
+            $('#model')
+                .append($('<option>', { value : id })
                     .text(name + (year ? ` (${year})` : '')));
-            });
         });
     });
-});
+}

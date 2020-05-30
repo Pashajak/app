@@ -1,15 +1,22 @@
-Hi
+<form action="show" class="ui form">
+  <div class="field">
+    <label>Марка автомобиля</label>
+    <select id="brand" class="ui dropdown">
+      <%= @brands.each do |brand| %>
+        <option value="<%= brand.id %>"><%= brand.name %></option>
+      <% end %>
+    </select>
+  </div>
 
-<select id="brand" name="brand">
-  <%= @brands.each do |brand| %>
-    <option value="<%= brand.id %>"><%= brand.name %></option>
-  <% end %>
-</select>
+  <div class="field">
+    <label>Модель автомобиля</label>
+    <select id="model" name="model_id" class="dropdown"></select>
+  </div>
 
-<form action="show">
-  <select id="model" name="model_id"></select>
+  <div class="field">
+    <label>Код ошибки</label>
+    <input type="text" name="code" placeholder="p0301">
+  </div>
 
-  <input type="text" name="code">
-
-  <button type="submit">Найти</button>
+  <button type="submit" class="ui button">Найти</button>
 </form>
