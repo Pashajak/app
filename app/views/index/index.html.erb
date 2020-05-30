@@ -2,6 +2,6 @@ Hi
 
 <select id="brand">
   <%= @brands.each do |brand| %>
-    <option><%= brand.name %></option>
+    <option value="<%= brand.id %>"><%= brand.name %></option>
   <% end %>
 </select>

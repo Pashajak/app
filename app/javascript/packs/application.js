@@ -19,6 +19,10 @@ $(document).ready(function() {
     $( "#brand" ).change(function(q) {
         console.log( $( "#brand" ).val() )
 
-        $.ajax("/models").done(data => console.log(data));
+        $.ajax({
+            url: '/models',
+            type: 'GET',
+            data: { brand_id: $( "#brand" ).val() }
+        }).done(data => console.log(data));
     });
 });

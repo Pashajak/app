@@ -1,9 +1,10 @@
 class IndexController < ApplicationController
   def index
-    @brands = Brand.all
+    @brands = Brand.order(:name).all
   end
 
   def models
-    render json: ['kek', 'lol', 'korvalol']
+    brand = Brand.find(params[:brand_id])
+    render json: brand.models.order(:name, :year)
   end
 end
