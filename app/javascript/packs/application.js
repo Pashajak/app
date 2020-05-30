@@ -17,12 +17,18 @@ require("jquery")
 
 $(document).ready(function() {
     $( "#brand" ).change(function(q) {
-        console.log( $( "#brand" ).val() )
-
         $.ajax({
             url: '/models',
             type: 'GET',
             data: { brand_id: $( "#brand" ).val() }
-        }).done(data => console.log(data));
+        }).done(data => {
+            $('#model').find('option').remove().end()
+
+            $.each(data, (_, {id, name, year}) => {
+                $('#model')
+                    .append($('<option>', { value : id })
+                    .text(name + (year ? ` (${year})` : '')));
+            });
+        });
     });
 });

@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_05_30_111426) do
 
   create_table "models", force: :cascade do |t|
     t.text "name"
-    t.integer "year"
+    t.text "year"
     t.integer "brand_id", null: false
     t.index ["brand_id"], name: "index_models_on_brand_id"
   end
