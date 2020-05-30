@@ -1,9 +1,15 @@
 Hi
 
-<select id="brand">
+<select id="brand" name="brand">
   <%= @brands.each do |brand| %>
     <option value="<%= brand.id %>"><%= brand.name %></option>
   <% end %>
 </select>
 
-<select id="model"></select>
+<form action="show">
+  <select id="model" name="model_id"></select>
+
+  <input type="text" name="code">
+
+  <button type="submit">Найти</button>
+</form>

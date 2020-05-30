@@ -7,4 +7,8 @@ class IndexController < ApplicationController
     brand = Brand.find(params[:brand_id])
     render json: brand.models.order(:name, :year)
   end
+
+  def show
+    @troubleshoot = Troubleshoot.find_by!(model_id: params[:model_id], code: params[:code])
+  end
 end

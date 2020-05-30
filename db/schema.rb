@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_111426) do
+ActiveRecord::Schema.define(version: 2020_05_30_120644) do
 
   create_table "brands", force: :cascade do |t|
     t.text "name"
@@ -23,5 +23,13 @@ ActiveRecord::Schema.define(version: 2020_05_30_111426) do
     t.index ["brand_id"], name: "index_models_on_brand_id"
   end
 
+  create_table "troubleshoots", force: :cascade do |t|
+    t.integer "model_id", null: false
+    t.text "code"
+    t.text "solution"
+    t.index ["model_id"], name: "index_troubleshoots_on_model_id"
+  end
+
   add_foreign_key "models", "brands"
+  add_foreign_key "troubleshoots", "models"
 end

@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: 'index#index'
 
   get '/models', to: 'index#models'
+
+  get '/show', to: 'index#show'
 end
