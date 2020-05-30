@@ -4,6 +4,6 @@ class IndexController < ApplicationController
   end
 
   def models
-    Logger.info "MODELS"
+    render json: ['kek', 'lol', 'korvalol']
   end
 end
