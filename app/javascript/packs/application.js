@@ -17,4 +17,7 @@ require("jquery")
 // const imagePath = (name) => images(name, true)
 
 $(document).ready(function() {
+    $( "#brand" ).change(function(q) {
+        console.log( q );
+    });
 });

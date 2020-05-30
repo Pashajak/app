@@ -1,3 +1,7 @@
 Hi
 
-<input id="brand" />
+<select id="brand">
+  <%= @brands.each do |brand| %>
+    <option><%= brand.name %></option>
+  <% end %>
+</select>
