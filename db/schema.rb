@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_05_30_120644) do
   end
 
   create_table "troubleshoots", force: :cascade do |t|
-    t.integer "model_id", null: false
+    t.integer "model_id"
     t.text "code"
     t.text "solution"
     t.index ["model_id"], name: "index_troubleshoots_on_model_id"

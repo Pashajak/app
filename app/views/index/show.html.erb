@@ -1,14 +1,16 @@
-<div>
-  Brand: <%= @troubleshoot.model.brand.name %>
-</div>
+<% if @troubleshoot.model %>
+  <div>
+    Brand: <%= @troubleshoot.model.brand.name %>
+  </div>
 
-<div>
-  Model: <%= @troubleshoot.model.name %>
-</div>
+  <div>
+    Model: <%= @troubleshoot.model.name %>
+  </div>
 
-<div>
-  Year: <%= @troubleshoot.model.year %>
-</div>
+  <div>
+    Year: <%= @troubleshoot.model.year %>
+  </div>
+<% end %>
 
 <div>
   Code: <%= @troubleshoot.code %>
@@ -17,5 +19,3 @@
 <div>
   <%= @troubleshoot.solution %>
 </div>
-
-
