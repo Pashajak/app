@@ -1,35 +1,42 @@
-<% if @troubleshoot.model %>
-  <div>
-    Бренд автомобиля: <%= @troubleshoot.model.brand.name %>
-  </div>
+<section>
+  <% if @troubleshoot.model %>
+    <div>
+      Бренд автомобиля: <%= @troubleshoot.model.brand.name %>
+    </div>
+
+    <div>
+      Модель автомобиля: <%= @troubleshoot.model.name %>
+    </div>
+
+    <div>
+      Год выпуска: <%= @troubleshoot.model.year %>
+    </div>
+  <% end %>
 
   <div>
-    Модель автомобиля: <%= @troubleshoot.model.name %>
+    Код ошибки: <%= @troubleshoot.code %>
   </div>
+</section>
 
+
+<section class="section">
   <div>
-    Год выпуска: <%= @troubleshoot.model.year %>
+    <%= simple_format @troubleshoot.solution %>
   </div>
-<% end %>
+</section>
 
-<div>
-  Код ошибки: <%= @troubleshoot.code %>
-</div>
+<section class="section">
+  <% if @has_next %>
+    <p><strong>Помогло?</strong></p>
 
-<div>
-  <%= simple_format @troubleshoot.solution %>
-</div>
+    <span>
+      <%= link_to "Да", :root, class: "ui button" %>
+    </span>
 
-<% if @has_next %>
-  <div>Помогло?</div>
-
-  <span>
-    <%= link_to "Да", :root, class: "ui button" %>
-  </span>
-
-  <span>
-    <%= link_to "Нет", { controller: "index", action: "show", model_id: @troubleshoot.model&.id, code: @troubleshoot.code, root_id: @troubleshoot.id }, class: "ui button" %>
-  </span>
-<% else %>
-  <span><%= link_to "На главную", :root, class: "ui button" %></span>
-<% end %>
+    <span>
+      <%= link_to "Нет", { controller: "index", action: "show", model_id: @troubleshoot.model&.id, code: @troubleshoot.code, root_id: @troubleshoot.id }, class: "ui button" %>
+    </span>
+  <% else %>
+    <span><%= link_to "На главную", :root, class: "ui button" %></span>
+  <% end %>
+</section>
