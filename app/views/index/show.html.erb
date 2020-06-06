@@ -19,3 +19,13 @@
 <div>
   <%= @troubleshoot.solution %>
 </div>
+
+<% if @has_next %>
+  <span>Помогло?</span>
+  <span><%= link_to "Да", :root %></span>
+  <span>
+    <%= link_to "Нет", controller: "index", action: "show", model_id: @troubleshoot.model.id, code: @troubleshoot.code, root_id: @troubleshoot.id %>
+  </span>
+<% else %>
+  <span><%= link_to "На главную", :root %></span>
+<% end %>

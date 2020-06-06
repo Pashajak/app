@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_120644) do
+ActiveRecord::Schema.define(version: 2020_06_06_105257) do
 
   create_table "brands", force: :cascade do |t|
     t.text "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_05_30_120644) do
     t.integer "model_id"
     t.text "code"
     t.text "solution"
+    t.integer "root_id"
     t.index ["model_id"], name: "index_troubleshoots_on_model_id"
   end
 

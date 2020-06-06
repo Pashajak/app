@@ -9,8 +9,25 @@ class IndexController < ApplicationController
   end
 
   def show
-    @troubleshoot =
-      Troubleshoot.find_by(model_id: params[:model_id], code: params[:code]) ||
-      Troubleshoot.find_by!(model_id: nil, code: params[:code])
+    @troubleshoot = specified(troubleshoot_params) || common(troubleshoot_params)
+    @has_next     = next_for?(@troubleshoot)
+  end
+
+  private
+
+  def specified(params)
+    Troubleshoot.find_by(params)
+  end
+
+  def common(params)
+    Troubleshoot.find_by(params.merge(model_id: nil))
+  end
+
+  def next_for?(troubleshoot)
+    Troubleshoot.where(root_id: troubleshoot.id).count > 0
+  end
+
+  def troubleshoot_params
+    params.permit(:model_id, :code, :root_id)
   end
 end
