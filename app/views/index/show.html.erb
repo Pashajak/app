@@ -21,11 +21,15 @@
 </div>
 
 <% if @has_next %>
-  <span>Помогло?</span>
-  <span><%= link_to "Да", :root %></span>
+  <div>Помогло?</div>
+
   <span>
-    <%= link_to "Нет", controller: "index", action: "show", model_id: @troubleshoot.model&.id, code: @troubleshoot.code, root_id: @troubleshoot.id %>
+    <%= link_to "Да", :root, class: "ui button" %>
+  </span>
+
+  <span>
+    <%= link_to "Нет", { controller: "index", action: "show", model_id: @troubleshoot.model&.id, code: @troubleshoot.code, root_id: @troubleshoot.id }, class: "ui button" %>
   </span>
 <% else %>
-  <span><%= link_to "На главную", :root %></span>
+  <span><%= link_to "На главную", :root, class: "ui button" %></span>
 <% end %>
