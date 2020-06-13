@@ -27,8 +27,6 @@
 
 <section class="section">
   <% if @children.present? %>
-    <p><strong>Помогло?</strong></p>
-
     <% @children.each do |child| %>
       <%= link_to child.answer, { controller: "index", action: "show", model_id: @troubleshoot.model&.id, code: @troubleshoot.code, root_id: child.id }, class: "ui button" %>
     <% end %>
