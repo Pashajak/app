@@ -9,7 +9,10 @@ class IndexController < ApplicationController
   end
 
   def show
-    @troubleshoot = Troubleshoot.root(params[:model_id], params[:code], params[:root_id])
+    code = params[:code].strip
+
+    @troubleshoot = Troubleshoot.root(params[:model_id], code, params[:root_id])
+
     @children     = Troubleshoot.children(@troubleshoot) if @troubleshoot.present?
   end
 end

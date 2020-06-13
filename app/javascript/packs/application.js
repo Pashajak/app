@@ -19,6 +19,7 @@ $(document).ready(function() {
     models()
 
     $( "#brand" ).change(models);
+    $( "#code" ).change(trim);
 });
 
 function models() {
@@ -35,4 +36,8 @@ function models() {
                     .text(name + (year ? ` (${year})` : '')));
         });
     });
+}
+
+function trim(event) {
+    event.target.value = event.target.value.trim()
 }

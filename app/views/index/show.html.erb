@@ -1,4 +1,10 @@
 <section>
+  <a href="<%= root_path %>">
+    <img src="logo.jpg" alt="logo" class="logo">
+  </a>
+</section>
+
+<section>
   <% if @troubleshoot.model %>
     <div>
       Бренд автомобиля: <%= @troubleshoot.model.brand.name %>
@@ -23,6 +29,13 @@
   <div>
     <%= simple_format @troubleshoot.solution %>
   </div>
+</section>
+
+<section>
+  <% if @troubleshoot.link_to %>
+    Данная проблема аналогична этой:
+    <%= link_to "Перейти", { controller: "index", action: "show", model_id: @troubleshoot.model&.id, code: @troubleshoot.link_to } %>
+  <% end %>
 </section>
 
 <section class="section">

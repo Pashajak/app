@@ -5,7 +5,7 @@ class Troubleshoot < ApplicationRecord
     params = { model_id: model_id, code: code, id: root_id }
       .select { |k, v| v.present? }
 
-    Troubleshoot.find_by(**params) || Troubleshoot.find_by(**params.merge(model_id: nil))
+    Troubleshoot.find_by(**params) || Troubleshoot.find_by!(**params.merge(model_id: nil))
   end
 
   def self.children(troubleshoot)
