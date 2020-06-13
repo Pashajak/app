@@ -26,16 +26,12 @@
 </section>
 
 <section class="section">
-  <% if @has_next %>
+  <% if @children.present? %>
     <p><strong>Помогло?</strong></p>
 
-    <span>
-      <%= link_to "Да", :root, class: "ui button" %>
-    </span>
-
-    <span>
-      <%= link_to "Нет", { controller: "index", action: "show", model_id: @troubleshoot.model&.id, code: @troubleshoot.code, root_id: @troubleshoot.id }, class: "ui button" %>
-    </span>
+    <% @children.each do |child| %>
+      <%= link_to child.answer, { controller: "index", action: "show", model_id: @troubleshoot.model&.id, code: @troubleshoot.code, root_id: child.id }, class: "ui button" %>
+    <% end %>
   <% else %>
     <span><%= link_to "На главную", :root, class: "ui button" %></span>
   <% end %>
